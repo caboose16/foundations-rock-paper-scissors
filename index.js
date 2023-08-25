@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let playerSelection = prompt()
+    let playerSelection = prompt('Select "rock", "paper", or "scissors"')
     let computerSelection = getComputerChoice()
 
     let message = playRound(playerSelection, computerSelection)
