@@ -36,10 +36,3 @@ function game() {
 
     console.log(message)
 }
-
-var games = 5;
-while (games > 0){
-    console.log(`Games Remaining: ${games}`)
-    game()
-    games -= 1
-}
