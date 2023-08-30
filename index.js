@@ -28,11 +28,17 @@ function playRound(playerSelection, computerSelection) {
     return `${message} ${winningSelection} beats ${losingSelection}!`
 }
 
-function game() {
-    let playerSelection = prompt('Select "rock", "paper", or "scissors"')
+function game(playerSelection) {
     let computerSelection = getComputerChoice()
 
     let message = playRound(playerSelection, computerSelection)
 
     console.log(message)
 }
+
+function playGame(e) {
+    game(e.srcElement.firstChild.data)
+}
+
+const playerButtons = document.querySelectorAll(".player-option")
+playerButtons.forEach( btn => btn.addEventListener("click", playGame))
