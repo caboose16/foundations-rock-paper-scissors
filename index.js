@@ -33,7 +33,7 @@ function game(playerSelection) {
 
     let message = playRound(playerSelection, computerSelection)
 
-    console.log(message)
+    changeStatus(message)
 }
 
 function playGame(e) {
@@ -42,3 +42,9 @@ function playGame(e) {
 
 const playerButtons = document.querySelectorAll(".player-option")
 playerButtons.forEach( btn => btn.addEventListener("click", playGame))
+
+const statusElement = document.querySelector(".game-status")
+
+function changeStatus(s) {
+    statusElement.textContent = s
+}
