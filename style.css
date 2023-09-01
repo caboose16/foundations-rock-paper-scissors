@@ -17,6 +17,10 @@
     width: 75px;
 }
 
+.hide-button {
+    display: none;
+}
+
 .scoreboard {
     display: flex;
     flex-direction: row;

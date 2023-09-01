@@ -6,12 +6,28 @@ function newGame() {
     playerScore = 0
     drawScore = 0
     computerScore = 0
+    winnerBoxElement.textContent = ""
+    updateScore()
 }
 
 function updateScore() {
     playerScoreElement.textContent = playerScore
     drawScoreElement.textContent = drawScore
     computerScoreElement.textContent = computerScore
+}
+
+function postWinner() {
+    let message = playerScore === 5 ? "You Win!" : "You Lost..."
+    winnerBoxElement.textContent = message
+}
+
+function togglePlayerChoiceContainerButtons() {
+    const hideButtonClass = "hide-button"
+    let playerChoiceContainer = document.querySelector(".player-choice-container")
+    playerChoiceContainer.childNodes.forEach((n) => {
+        if (n.localName !== "button") return;
+        n.classList.contains(hideButtonClass) ? n.classList.remove(hideButtonClass) : n.classList.add(hideButtonClass)
+    })
 }
 
 function getComputerChoice() {
@@ -51,15 +67,26 @@ function game(playerSelection) {
 
     updateScore()
     changeStatus(message)
+    if (playerScore === 5 || computerScore === 5) {
+        postWinner()
+        togglePlayerChoiceContainerButtons()
+    }
 }
 
 function playGame(e) {
     game(e.srcElement.firstChild.data)
 }
 
+function newGameClick() {
+    newGame()
+    changeStatus("Ready to Play!")
+    togglePlayerChoiceContainerButtons()
+}
+
 const playerButtons = document.querySelectorAll(".player-choice")
 playerButtons.forEach( btn => btn.addEventListener("click", playGame))
 
+const winnerBoxElement = document.querySelector("#winner-box")
 const statusElement = document.querySelector(".game-status")
 const playerScoreElement = document.querySelector("#player-score")
 const drawScoreElement = document.querySelector("#draw-score")
