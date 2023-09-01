@@ -1,3 +1,19 @@
+let playerScore = 0
+let drawScore = 0
+let computerScore = 0
+
+function newGame() {
+    playerScore = 0
+    drawScore = 0
+    computerScore = 0
+}
+
+function updateScore() {
+    playerScoreElement.textContent = playerScore
+    drawScoreElement.textContent = drawScore
+    computerScoreElement.textContent = computerScore
+}
+
 function getComputerChoice() {
     let choice = Math.random() * 3
     if (choice === 0) return 'rock'
@@ -12,20 +28,20 @@ function playRound(playerSelection, computerSelection) {
     let losingSelection = ''
 
     if (playerSelection == computerSelection) { 
-        return "Draw!"
+        drawScore += 1
     } else if (playerSelection == 'rock' && computerSelection == 'paper' ||
             playerSelection == 'paper' && computerSelection == 'scissors' ||
             playerSelection == 'scissors' && computerSelection == 'rock') {
+        playerScore += 1
         winningSelection = playerSelection;
         losingSelection = computerSelection;
-        message += 'You Win!'
     } else {
+        computerScore += 1
         winningSelection = computerSelection;
         losingSelection = playerSelection;
-        message += 'You Lose!'
     }
 
-    return `${message} ${winningSelection} beats ${losingSelection}!`
+    return winningSelection == losingSelection ? 'DRAW!' : `${winningSelection} beats ${losingSelection}!`.toUpperCase()
 }
 
 function game(playerSelection) {
@@ -33,6 +49,7 @@ function game(playerSelection) {
 
     let message = playRound(playerSelection, computerSelection)
 
+    updateScore()
     changeStatus(message)
 }
 
@@ -44,6 +61,9 @@ const playerButtons = document.querySelectorAll(".player-choice")
 playerButtons.forEach( btn => btn.addEventListener("click", playGame))
 
 const statusElement = document.querySelector(".game-status")
+const playerScoreElement = document.querySelector("#player-score")
+const drawScoreElement = document.querySelector("#draw-score")
+const computerScoreElement = document.querySelector("#computer-score")
 
 function changeStatus(s) {
     statusElement.textContent = s
