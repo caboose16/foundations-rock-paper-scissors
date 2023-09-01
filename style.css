@@ -1,0 +1,38 @@
+.game-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+}
+
+.player-choice-container {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+}
+
+.player-choice {
+    width: 75px;
+}
+
+.hide-button {
+    display: none;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+.scoreboard-player {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.scoreboard-score {
+    margin-top: 5px;
+}
