@@ -6,6 +6,17 @@
     width: 300px;
 }
 
+.player-choice-container {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+}
+
+.player-choice {
+    width: 75px;
+}
+
 .scoreboard {
     display: flex;
     flex-direction: row;
