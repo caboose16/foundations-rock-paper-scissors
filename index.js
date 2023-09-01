@@ -40,7 +40,7 @@ function playGame(e) {
     game(e.srcElement.firstChild.data)
 }
 
-const playerButtons = document.querySelectorAll(".player-option")
+const playerButtons = document.querySelectorAll(".player-choice")
 playerButtons.forEach( btn => btn.addEventListener("click", playGame))
 
 const statusElement = document.querySelector(".game-status")
